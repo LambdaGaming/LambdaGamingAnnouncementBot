@@ -144,6 +144,11 @@ client:on( "messageCreate", function( message )
 	if split[1] == "!test" then
 		message.channel:send( "Lambda Gaming Announcement Bot successfully loaded. Running on Lua 5.3" )
 	elseif split[1] == "!opening" then
+		if author.id ~= "580873862036717572" then
+			message:reply( "Only OP can use this command." )
+			return
+		end
+
 		local numsplit = tonumber( split[2] )
 		if not split[2] or type( numsplit ) ~= "number" then
 			message:reply( author.username..", please input a number as the second argument for the opening command." )
