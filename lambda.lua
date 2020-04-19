@@ -166,6 +166,7 @@ client:on( "messageCreate", function( message )
 		else
 			public = "No"
 		end
+		message:reply( "@everyone" )
 		message:reply {
 			embed = {
 				title = "Server Opening!",
