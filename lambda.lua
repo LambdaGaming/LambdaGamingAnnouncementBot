@@ -109,7 +109,7 @@ local servers = {
 	},
 	{
 		Name = "SCP: Secret Laboratory",
-		Description = "ALPHA WARHEAD EMERGENCY DETONATION SEQUENCE ENGAGED. THE UNDERGROUND SECTION OF THE FACILITY WILL BE DETONATED IN T-MINUS 60 SECONDS.",
+		Description = "Multiplayer Containment Breach with improved graphics. Server runs various plugins to keep replayability up and repetition down.",
 		Public = false
 	},
 	{
