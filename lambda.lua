@@ -9,7 +9,7 @@ local servers = {
 	},
 	{
 		Name = "Half-Life Universe RP (Garry's Mod)",
-		Description = "Custom gamemode based on the major events of the full Half-Life storyline.",
+		Description = "Custom gamemode based on the major events of the official Half-Life games.",
 		Public = true
 	},
 	{
@@ -166,24 +166,7 @@ client:on( "messageCreate", function( message )
 		else
 			public = "No"
 		end
-		message:reply( "@everyone" )
-		message:reply {
-			embed = {
-				title = "Server Opening!",
-				description = "A server is being opened! Check below for details.",
-				fields = {
-					{
-						name = "Server: "..tbl.Name,
-						value = "Description: "..tbl.Description,
-						inline = true
-					},
-				},
-				footer = {
-					text = "Is the server public?: "..public
-				},
-				color = 0xFF5900
-			}
-		}
+		message:reply( ">>> @everyone\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public )
 	end
 end )
 
