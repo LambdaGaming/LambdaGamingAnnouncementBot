@@ -54,7 +54,7 @@ local servers = {
 	},
 	[11] = {
 		Name = "Ricochet",
-		Description = "Why?",
+		Description = "#1 greatest game of all time.",
 		Public = true
 	},
 	[12] = {
@@ -125,6 +125,11 @@ local servers = {
 	[25] = {
 		Name = "Killing Floor 2",
 		Description = "Zombie Survival 2.",
+		Public = false
+	},
+	[26] = {
+		Name = "Synergy",
+		Description = "Multiplayer Half-Life 2. Also supports Episodes 1 and 2.",
 		Public = false
 	}
 }
