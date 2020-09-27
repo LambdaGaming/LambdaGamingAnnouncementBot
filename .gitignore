@@ -8,5 +8,10 @@ deps/
 *.log
 gateway.json
 
+# xml2lua stuff
+xmlhandler/
+XmlParser.lua
+xml2lua.lua
+
 # Misc
-serverlist.txt
+temp.xml
