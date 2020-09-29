@@ -5,6 +5,10 @@ local discordia = require( "discordia" )
 local client = discordia.Client()
 local token = io.open( "token.txt", "r" )
 
+local function StartsWith( str, start )
+	return string.sub( str, 1, string.len( start ) ) == start
+end
+
 client:on( "ready", function()
 	print( "Logged in as "..client.user.username )
 end )
@@ -64,9 +68,13 @@ client:on( "messageCreate", function( message )
 			return
 		end
 
-		os.execute( "rss.bat" ) --I'm just gonna hand this over to a python script since I'm too lazy to figure out how to make http requests in lua
+		local xml = assert( io.popen( "rss.py", "r" ) ):read( "*all" ) --I'm just gonna hand this over to a python script since I'm too lazy to figure out how to make http requests in lua
+		if StartsWith( xml, "ERROR:" ) then
+			message:reply( xml )
+			message:delete()
+			return
+		end
 
-		local xml = xml2lua.loadFile( "temp.xml" )
 		local parser = xml2lua.parser( handler )
 		parser:parse( xml )
 

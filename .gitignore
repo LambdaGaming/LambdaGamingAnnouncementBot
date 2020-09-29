@@ -12,6 +12,3 @@ gateway.json
 xmlhandler/
 XmlParser.lua
 xml2lua.lua
-
-# Misc
-temp.xml
