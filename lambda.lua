@@ -9,6 +9,23 @@ local function StartsWith( str, start )
 	return string.sub( str, 1, string.len( start ) ) == start
 end
 
+local function ParseDescription( desc )
+	local formats = {
+		{ [[<div class="bb_h1">]], "\n**" },
+		{ "</div>", "**" },
+		{ [[<ul class="bb_ul">]], "" },
+		{ "</ul>", "" },
+		{ "<li>", "\n\t•" },
+		{ "</li>", "" },
+		{ "<br><br>", "" },
+		{ "<br>", "\n" }
+	}
+	for k,v in pairs( formats ) do
+		desc = string.gsub( desc, v[1], v[2] )
+	end
+	return desc
+end
+
 client:on( "ready", function()
 	print( "Logged in as "..client.user.username )
 end )
@@ -68,7 +85,7 @@ client:on( "messageCreate", function( message )
 			return
 		end
 
-		local xml = assert( io.popen( "rss.py", "r" ) ):read( "*all" ) --I'm just gonna hand this over to a python script since I'm too lazy to figure out how to make http requests in lua
+		local xml = assert( io.popen( "rss.py", "r" ) ):read( "*all" ) --Handing this over to a python script since it's easier to make http requests there
 		if StartsWith( xml, "ERROR:" ) then
 			message:reply( xml )
 			message:delete()
@@ -79,8 +96,9 @@ client:on( "messageCreate", function( message )
 		parser:parse( xml )
 
 		local rss = handler.root.rss.channel
-		local latest = rss.item[1].link
-		message:reply( latest )
+		local title = rss.item[1].title
+		local description = rss.item[1].description
+		message:reply( ">>> __**"..title.."**__\n"..ParseDescription( description ) )
 		message:delete()
 	end
 end )
