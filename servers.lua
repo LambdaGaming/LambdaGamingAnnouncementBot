@@ -108,9 +108,9 @@ servers = {
 		Public = false
 	},
 	[19] = {
-		ShortName = "city",
-		Name = "City Build (Minecraft)",
-		Description = "The main goal of this server is to cooperatively build a giant city using various mods to make the process go faster and look nicer. Runs on version 1.12.2.",
+		ShortName = "unbalanced2",
+		Name = "Unbalanced 2 (Minecraft)",
+		Description = "Same as Unbalanced but with different mods and more straight-forward rules. Runs on version 1.12.2.",
 		Public = false
 	},
 	[20] = {
