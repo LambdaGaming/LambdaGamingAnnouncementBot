@@ -78,7 +78,7 @@ client:on( "messageCreate", function( message )
 			public = "No"
 		end
 		message.channel:bulkDelete( allmessages )
-		message:reply( ">>> @everyone\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public )
+		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public )
 	elseif split[1] == "!update" then
 		if not message.member:hasPermission( 8 ) then
 			message:reply( "Only superadmins can use this command." )
