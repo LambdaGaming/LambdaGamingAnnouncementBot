@@ -5,10 +5,6 @@ local discordia = require( "discordia" )
 local client = discordia.Client()
 local token = io.open( "token.txt", "r" )
 
-local function StartsWith( str, start )
-	return string.sub( str, 1, string.len( start ) ) == start
-end
-
 local function ParseDescription( desc )
 	local formats = {
 		{ [[<div class="bb_h1">]], "\n**" },
@@ -45,38 +41,17 @@ client:on( "messageCreate", function( message )
 			return
 		end
 
-		local numsplit = tonumber( split[2] )
 		if not split[2] then
 			message:reply( "Please input a number or server name as the second argument for the opening command." )
 			return
 		end
-		if type( numsplit ) == "number" and not servers[numsplit] then
-			message:reply( "Input index number is out of range." )
+		if not servers[split[2]] then
+			message:reply( "Server name is invalid." )
 			return
 		end
 
-		if type( numsplit ) ~= "number" then
-			local foundstring = false
-			for k,v in pairs( servers ) do
-				if string.lower( v.ShortName ) == string.lower( split[2] ) then
-					foundstring = true
-					numsplit = k
-					break
-				end
-			end
-			if not foundstring then
-				message:reply( "The name you input is invalid." )
-				return
-			end
-		end
-
-		local tbl = servers[numsplit]
-		local public
-		if tbl.Public then
-			public = "Yes"
-		else
-			public = "No"
-		end
+		local tbl = servers[split[2]]
+		local public = tbl.Public and "Yes" or "No"
 		message.channel:bulkDelete( allmessages )
 		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public )
 	elseif split[1] == "!update" then
@@ -86,18 +61,17 @@ client:on( "messageCreate", function( message )
 		end
 
 		local xml = assert( io.popen( "rss.py", "r" ) ):read( "*all" ) --Handing this over to a python script since it's easier to make http requests there
-		if StartsWith( xml, "ERROR:" ) then
-			message:reply( xml )
-			message:delete()
-			return
-		end
-
 		local parser = xml2lua.parser( handler )
 		parser:parse( xml )
 
-		local rss = handler.root.rss.channel
-		local title = rss.item[1].title
-		local description = rss.item[1].description
+		local rss = handler.root.rss
+		if not rss then
+			message:reply( "ERROR: Something went wrong while fetching the RSS feed. No details to provide." )
+		end
+
+		local channel = rss.channel
+		local title = channel.item[1].title
+		local description = channel.item[1].description
 		message:reply( ">>> __**"..title.."**__\n"..ParseDescription( description ) )
 		message:delete()
 	end
