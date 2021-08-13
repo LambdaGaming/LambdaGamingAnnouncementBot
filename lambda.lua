@@ -30,7 +30,7 @@ client:on( "messageCreate", function( message )
 	local author = message.author
 	local content = message.content
 	local getsplit = string.gmatch( content, "%S+" )
-	local allmessages = message.channel:getMessages()
+	local allmessages = message.channel:getMessages( 2 )
 	local split = {}
 	for i in getsplit do
 		table.insert( split, i )
