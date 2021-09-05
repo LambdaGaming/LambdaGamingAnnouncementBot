@@ -22,6 +22,20 @@ local function ParseDescription( desc )
 	return desc
 end
 
+local function GetAdditionalInfo( split )
+	local str = ""
+	if split[3] then
+		local tbl = split
+		tbl[1] = nil
+		tbl[2] = nil
+		for k,v in pairs( tbl ) do
+			str = str..v.." "
+		end
+		return "\n\n**Additional Info: **"..str
+	end
+	return ""
+end
+
 client:on( "ready", function()
 	print( "Logged in as "..client.user.username )
 end )
@@ -40,7 +54,6 @@ client:on( "messageCreate", function( message )
 			message:reply( "Only superadmins can use this command." )
 			return
 		end
-
 		if not split[2] then
 			message:reply( "Please input a number or server name as the second argument for the opening command." )
 			return
@@ -52,8 +65,9 @@ client:on( "messageCreate", function( message )
 
 		local tbl = servers[split[2]]
 		local public = tbl.Public and "Yes" or "No"
+		local additional = GetAdditionalInfo( split )
 		message.channel:bulkDelete( allmessages )
-		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public )
+		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public..additional )
 	elseif split[1] == "!update" then
 		if not message.member:hasPermission( 8 ) then
 			message:reply( "Only superadmins can use this command." )
