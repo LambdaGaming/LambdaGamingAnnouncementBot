@@ -74,13 +74,14 @@ client:on( "messageCreate", function( message )
 			return
 		end
 
-		local xml = assert( io.popen( "rss.py", "r" ) ):read( "*all" ) --Handing this over to a python script since it's easier to make http requests there
+		local xml = assert( io.popen( "rss.py" ) ):read( "*all" ) --Handing this over to a python script since it's easier to make http requests there
 		local parser = xml2lua.parser( handler )
 		parser:parse( xml )
 
 		local rss = handler.root.rss
 		if not rss then
 			message:reply( "ERROR: Something went wrong while fetching the RSS feed. No details to provide." )
+			return
 		end
 
 		local channel = rss.channel
