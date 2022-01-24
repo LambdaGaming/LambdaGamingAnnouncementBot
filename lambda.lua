@@ -66,8 +66,14 @@ client:on( "messageCreate", function( message )
 		local tbl = servers[split[2]]
 		local public = tbl.Public and "Yes" or "No"
 		local additional = GetAdditionalInfo( split )
+		local content = ""
+
+		if tbl.Content then
+			content = "\n\n**Required Content: **<"..tbl.Content..">"
+		end
+
 		message.channel:bulkDelete( allmessages )
-		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public..additional )
+		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public..content..additional )
 	elseif split[1] == "!update" then
 		if not message.member:hasPermission( 8 ) then
 			message:reply( "Only superadmins can use this command." )

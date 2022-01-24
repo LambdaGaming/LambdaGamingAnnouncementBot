@@ -3,25 +3,29 @@ servers = {
 		Name = "CityRP (Garry's Mod)",
 		Description = "Plays like the default DarkRP gamemode but more advanced and takes place in a modern city environment. Rules are similar to those seen on Lawless RP servers.",
 		Public = true,
-		Mention = "798362321424220190"
+		Mention = "798362321424220190",
+		Content = "https://steamcommunity.com/sharedfiles/filedetails/?id=629442313"
 	},
 	["hlurp"] = {
 		Name = "Half-Life Universe RP (Garry's Mod)",
 		Description = "Custom gamemode based on the major events of the official Half-Life games.",
 		Public = true,
-		Mention = "798362321424220190"
+		Mention = "798362321424220190",
+		Content = "https://steamcommunity.com/sharedfiles/filedetails/?id=587127431"
 	},
 	["sandbox"] = {
 		Name = "Sandbox (Garry's Mod)",
 		Description = "Server from an old community, contains addons from other servers put together in a sandbox environment with dozens of maps.",
 		Public = true,
-		Mention = "798362321424220190"
+		Mention = "798362321424220190",
+		Content = "https://steamcommunity.com/sharedfiles/filedetails/?id=480846269"
 	},
 	["various"] = {
 		Name = "Various Gamemodes (Garry's Mod)",
 		Description = "This server currently hosts the following gamemodes: Cops and Runners, Flood, Homicide, Jazztronauts, Prop Hunt, Pirate Ship Wars Remix, Pirates Vs Boners, Dropzone, Sledbuild, Stop it Slender, TTT, Trash Compactor, and Zombie Survival.",
 		Public = true,
-		Mention = "798362321424220190"
+		Mention = "798362321424220190",
+		Content = "https://steamcommunity.com/sharedfiles/filedetails/?id=753320794"
 	},
 	["rok"] = {
 		Name = "Reign of Kings",
@@ -45,7 +49,8 @@ servers = {
 		Name = "Team Fortress 2",
 		Description = "Hat simulator.",
 		Public = true,
-		Mention = "798362762585309204"
+		Mention = "798362762585309204",
+		Content = "https://www.dropbox.com/s/tfkkv9kuvr625br/lambda_tf2.rar?dl=1"
 	},
 	["hldm"] = {
 		Name = "Half-Life Deathmatch",
@@ -79,39 +84,44 @@ servers = {
 	},
 	["vanilla"] = {
 		Name = "Vanilla (Minecraft)",
-		Description = "Always runs the most up-to-date version of the game, not including snapshots.",
+		Description = "Always runs the most recent release of the game. Multiple maps to choose from.",
 		Public = false,
 		Mention = "798360357042257920"
 	},
 	["modded"] = {
 		Name = "OG Modded (Minecraft)",
-		Description = "Normal survival with basic rules, runs with around 50 mods on version 1.12.2.",
+		Description = "Original modded Minecraft server. Contains around 50 various mods. Players are in survival mode. Runs on version 1.12.2.",
 		Public = false,
-		Mention = "798360357042257920"
+		Mention = "798360357042257920",
+		Content = "https://www.technicpack.net/modpack/lambda-gaming-modded"
 	},
 	["unbalanced"] = {
 		Name = "Unbalanced (Minecraft)",
-		Description = "Normal survival with little rules. Runs with around 60 OP mods that were rejected from the other servers. Runs on version 1.12.2. Only runs on beefy PCs!",
+		Description = "Modded Minecraft server that contains around 60 OP mods that were rejected from other servers. Players are in survival mode. Runs on version 1.12.2. WARNING: Some PCs may struggle to run this modpack.",
 		Public = false,
-		Mention = "798360357042257920"
+		Mention = "798360357042257920",
+		Content = "https://www.technicpack.net/modpack/lambda-gaming-unbalanced"
 	},
 	["unbalanced2"] = {
 		Name = "Unbalanced 2 (Minecraft)",
-		Description = "Same as Unbalanced but with different mods and more straight-forward rules. Runs on version 1.12.2.",
+		Description = "Modded Minecraft server that contains around 60 OP mods that were rejected or never added to other servers. Players are in survival mode. Runs on version 1.12.2. WARNING: Some PCs may struggle to run this modpack.",
 		Public = false,
-		Mention = "798360357042257920"
+		Mention = "798360357042257920",
+		Content = "https://www.technicpack.net/modpack/lambda-gaming-unbalanced-2"
 	},
 	["rlcraft"] = {
 		Name = "RLCraft (Minecraft)",
 		Description = "Runs the most recent version of the RLCraft modpack. Not recommended for people with low amounts of patience.",
 		Public = false,
-		Mention = "798360357042257920"
+		Mention = "798360357042257920",
+		Content = "https://www.technicpack.net/modpack/shivaxi-rlcraft"
 	},
 	["earth"] = {
 		Name = "Earth (Minecraft)",
-		Description = "Runs the 1:1 scale Earth mod along with various other mods with the goal of simply building. All players get admin, some rules are in place to avoid abuse. Runs on version 1.12.2.",
+		Description = "Modded minecraft server that runs the 1:1 scale Earth mod along with various other mods with the goal of simply building. Players are in creative mode by default but have admin privileges to switch to other modes if needed. Runs on version 1.12.2.",
 		Public = false,
-		Mention = "798360357042257920"
+		Mention = "798360357042257920",
+		Content = "https://www.technicpack.net/modpack/lambda-gaming-earth"
 	},
 	["scp"] = {
 		Name = "SCP: Secret Laboratory",
