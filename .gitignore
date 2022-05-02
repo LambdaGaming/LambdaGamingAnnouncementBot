@@ -2,8 +2,9 @@
 # Discord bot token file
 token.txt
 
-# Discordia stuff
+# Luvit stuff
 deps/
+!deps/discordia
 *.exe
 *.log
 gateway.json
