@@ -1,9 +1,14 @@
-require( "servers" )
+package.path = "xml2lua/?.lua;"..package.path
+
 local xml2lua = require( "xml2lua" )
-local handler = require( "xmlhandler.tree" )
+local handler = require( "xml2lua.xmlhandler.tree" )
 local discordia = require( "discordia" )
+local json = require( "json" )
 local client = discordia.Client()
-local token = io.open( "token.txt", "r" )
+local token = io.open( "token.txt" )
+local jsonfile = io.open( "servers.json" )
+local servers = json.parse( jsonfile:read( "*a" ) )
+io.close( jsonfile )
 
 local function ParseDescription( desc )
 	local formats = {
