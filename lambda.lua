@@ -56,7 +56,7 @@ client:on( "messageCreate", function( message )
 	end
 	if split[1] == "!opening" then
 		if not message.member:hasPermission( 8 ) then
-			message:reply( "Only superadmins can use this command." )
+			message:reply( "Only the owner can use this command." )
 			return
 		end
 		if not split[2] then
@@ -81,7 +81,7 @@ client:on( "messageCreate", function( message )
 		message:reply( ">>> <@&"..tbl.Mention..">\n__**Server Opening!**__\n\n**Server: **"..tbl.Name.."\n\n**Description: **"..tbl.Description.."\n\n**Is the server public?: **"..public..content..additional )
 	elseif split[1] == "!update" then
 		if not message.member:hasPermission( 8 ) then
-			message:reply( "Only superadmins can use this command." )
+			message:reply( "Only the owner can use this command." )
 			return
 		end
 
@@ -89,15 +89,14 @@ client:on( "messageCreate", function( message )
 		local parser = xml2lua.parser( handler )
 		parser:parse( xml )
 
-		local rss = handler.root.rss
+		local rss = handler.root.rss.channel
 		if not rss then
 			message:reply( "ERROR: Something went wrong while fetching the RSS feed. No details to provide." )
 			return
 		end
 
-		local channel = rss.channel
-		local title = channel.item[1].title
-		local description = channel.item[1].description
+		local title = rss.item[1].title
+		local description = rss.item[1].description
 		message:reply( ">>> __**"..title.."**__\n"..ParseDescription( description ) )
 		message:delete()
 	end
