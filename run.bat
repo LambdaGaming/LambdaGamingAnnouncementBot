@@ -1,2 +1,3 @@
-python lambda.py
-pause
+@echo off
+start "" pyw prime.py
+exit
