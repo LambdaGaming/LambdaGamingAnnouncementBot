@@ -1,15 +1,2 @@
-
 # Discord bot token file
 token.txt
-
-# Luvit stuff
-deps/
-!deps/discordia
-*.exe
-*.log
-gateway.json
-
-# xml2lua stuff
-xmlhandler/
-XmlParser.lua
-xml2lua.lua

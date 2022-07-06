@@ -1,2 +1,2 @@
-luvit lambda.lua
+python lambda.py
 pause
