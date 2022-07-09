@@ -1,3 +1,3 @@
 @echo off
-start "" pyw prime.py
+start "" pyw lambda.py
 exit

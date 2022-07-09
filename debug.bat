@@ -1,2 +1,2 @@
-py prime.py
+py lambda.py
 pause
