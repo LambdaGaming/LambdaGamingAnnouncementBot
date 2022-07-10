@@ -3,12 +3,13 @@
 		"Name":"SCP: Secret Laboratory",
 		"Mention":"798362377270722663",
 		"Description":"Multiplayer Containment Breach with improved graphics. Server runs various plugins to keep repetition down.",
-		"*Public":false
+		"Public":false
 	},
 	"tfc": {
 		"Name":"Team Fortress Classic",
 		"Mention":"798362762585309204",
-		"Description":"Hat simulator: boomer edition.","Public":true
+		"Description":"Hat simulator: boomer edition.",
+		"Public":true
 	},
 	"cs": {
 		"Name":"Counter-Strike 1.6",
