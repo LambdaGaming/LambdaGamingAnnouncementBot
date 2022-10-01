@@ -1,6 +1,7 @@
-from discord.ext import commands
+import discord
 import feedparser
 import json
+from discord.ext import commands
 
 bot = commands.Bot( command_prefix = "!" )
 jsonfile = open( "servers.json", "r" )
@@ -9,7 +10,7 @@ jsonfile.close()
 
 def ParseSummary( summary ):
 	formats = [
-		['<div class="bb_h1">', "\n**"],
+		['<div class="bb_h1">', "\n\n**"],
 		["</div>", "**"],
 		['<ul class="bb_ul">', ""],
 		["</ul>", ""],
@@ -62,7 +63,13 @@ async def opening( ctx, *args ):
 async def update( ctx ):
 	getrss = feedparser.parse( "https://steamcommunity.com/groups/LambdaG/rss" )
 	item = getrss.entries[0]
-	await ctx.send( f">>> __**{item.title}**__\n{ParseSummary( item.summary )}" )
+	embed = discord.Embed(
+		title = item.title,
+		url = item.link,
+		description = ParseSummary( item.summary ),
+		color = 0xFF5900
+	)
+	await ctx.send( embed = embed )
 	await ctx.message.delete()
 
 if __name__ == "__main__":
