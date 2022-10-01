@@ -35,18 +35,18 @@ async def on_ready():
 @bot.event
 async def on_command_error( ctx, error ):
 	if isinstance( error, commands.MissingRequiredArgument ):
-		await ctx.send( "Missing argument(s) for " + ctx.message.content )
+		await ctx.send( f"Missing argument(s) for {ctx.message.content}", delete_after = 5 )
 	if isinstance( error, commands.MissingPermissions ):
-		await ctx.send( "You don't have permission to use this command." )
+		await ctx.send( "You don't have permission to use this command.", delete_after = 5 )
 
 @commands.has_permissions( administrator = True )
 @bot.command()
 async def opening( ctx, *args ):
 	if len( args ) < 1:
-		await ctx.message.reply( "Please input the server name as the first argument." )
+		await ctx.send( "Please input the server name as the first argument.", delete_after = 5 )
 		return
 	if not args[0] in servers:
-		await ctx.message.reply( "Server name is invalid." )
+		await ctx.send( "Server name is invalid.", delete_after = 5 )
 		return
 	tbl = servers[args[0]]
 	public = tbl['Public'] and "Yes" or "No"
@@ -54,7 +54,7 @@ async def opening( ctx, *args ):
 	content = ""
 	if "Content" in tbl:
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
-	await ctx.channel.purge( limit = 2 )
+	await ctx.message.delete()
 	await ctx.send( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Is the server public?: **{public}{content}{additional}" )
 
 @commands.has_permissions( administrator = True )
@@ -70,4 +70,4 @@ if __name__ == "__main__":
 		token = open( "token.txt", "r" )
 		bot.run( token.read() )
 	except Exception as e:
-		print( "An error occurred while loading the bot: " + str( e ) )
+		print( f"An error occurred while loading the bot: {e}" )
