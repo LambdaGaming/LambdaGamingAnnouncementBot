@@ -3,7 +3,8 @@ import feedparser
 import json
 from discord.ext import commands
 
-bot = commands.Bot( command_prefix = "!" )
+intents = discord.Intents.all()
+bot = commands.Bot( command_prefix = "!", intents = intents )
 jsonfile = open( "servers.json", "r" )
 servers = json.loads( jsonfile.read() )
 jsonfile.close()
