@@ -61,6 +61,13 @@
 		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded"
 	},
+	"modded2": {
+		"Name":"Modded 2 (Minecraft)",
+		"Description":"Sequel to OG modded. Contains over 50 various mods. Players are in survival mode. Runs on version 1.19.2.",
+		"Public":false,
+		"Mention":"798360357042257920",
+		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded-2"
+	},
 	"hldms": {
 		"Name":"Half-Life Deathmatch: Source",
 		"Mention":"798362762585309204",
