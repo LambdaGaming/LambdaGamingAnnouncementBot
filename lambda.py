@@ -51,13 +51,13 @@ async def opening( ctx, *args ):
 		await ctx.send( "Server name is invalid.", delete_after = 5 )
 		return
 	tbl = servers[args[0]]
-	public = tbl['Public'] and "Yes" or "No"
+	available = tbl['Availability']
 	additional = GetAdditionalInfo( *args )
 	content = ""
 	if "Content" in tbl:
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
 	await ctx.message.delete()
-	await ctx.send( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Is the server public?: **{public}{content}{additional}" )
+	await ctx.send( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}{additional}" )
 
 @commands.has_permissions( administrator = True )
 @bot.command()
