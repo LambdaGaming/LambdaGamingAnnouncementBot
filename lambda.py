@@ -51,7 +51,7 @@ async def opening( ctx, *args ):
 		await ctx.send( "Server name is invalid.", delete_after = 5 )
 		return
 	tbl = servers[args[0]]
-	available = tbl['Availability']
+	available = tbl['Available']
 	additional = GetAdditionalInfo( *args )
 	content = ""
 	if "Content" in tbl:
