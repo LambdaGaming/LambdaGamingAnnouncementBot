@@ -28,7 +28,10 @@ def ParseSummary( summary ):
 
 def GetAdditionalInfo( *args ):
 	if len( args ) >= 2:
-		return f"\n\n**Additional Info: **{args[1]}"
+		info = ""
+		for i in range( 1, len( args ) ):
+			info += f" {args[i]}"
+		return f"\n\n**Additional Info:**{info}"
 	return ""
 
 @bot.event
