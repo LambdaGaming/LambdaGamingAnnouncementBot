@@ -19,7 +19,8 @@ def ParseSummary( summary ):
 		["</li>", ""],
 		["<br><br>", ""],
 		["<br />", ""],
-		["<br>", "\n"]
+		["<br>", "\n"],
+		["&quot;", '"']
 	]
 	for f in formats:
 		summary = summary.replace( f[0], f[1] )
