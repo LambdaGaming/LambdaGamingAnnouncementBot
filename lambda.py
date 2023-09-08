@@ -107,6 +107,13 @@ async def closevote( ctx ):
 	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
 	await ctx.send( "Server voting is now closed." )
 	await ctx.message.delete()
+	messages = [message async for message in channel.history()]
+	await messages[0].clear_reactions()
+	await messages[1].clear_reactions()
+	for e in ( '🇦', '🇧', '🇨', '🇩', '🇪', '🇫', '🇬' ):
+		await messages[0].add_reaction( e )
+	for e in ( '1️⃣', '2️⃣', '3️⃣', '4️⃣' ):
+		await messages[1].add_reaction( e )
 
 if __name__ == "__main__":
 	try:
