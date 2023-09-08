@@ -87,6 +87,27 @@ async def update( ctx ):
 	await ctx.send( embed = embed )
 	await ctx.message.delete()
 
+@commands.has_permissions( administrator = True )
+@bot.command()
+async def openvote( ctx ):
+	id = 1149523239673004053
+	channel = bot.get_channel( id )
+	perms = channel.overwrites_for( ctx.guild.default_role )
+	perms.view_channel = True
+	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
+	await ctx.send( f"<@&605212647494778901> <#{id}> is now open!" )
+	await ctx.message.delete()
+
+@commands.has_permissions( administrator = True )
+@bot.command()
+async def closevote( ctx ):
+	channel = bot.get_channel( 1149523239673004053 )
+	perms = channel.overwrites_for( ctx.guild.default_role )
+	perms.view_channel = False
+	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
+	await ctx.send( "Server voting is now closed." )
+	await ctx.message.delete()
+
 if __name__ == "__main__":
 	try:
 		token = open( "token.txt", "r" )
