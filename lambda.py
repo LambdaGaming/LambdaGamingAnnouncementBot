@@ -1,6 +1,7 @@
 import discord
 import feedparser
 import json
+from datetime import timedelta
 from discord.ext import commands
 
 intents = discord.Intents.all()
@@ -62,6 +63,15 @@ async def opening( ctx, *args ):
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
 	await ctx.message.delete()
 	await ctx.send( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}{additional}" )
+	await ctx.guild.create_scheduled_event(
+		name = "Server Opening",
+		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}{additional}",
+		start_time = discord.utils.utcnow() + timedelta( seconds = 5 ),
+		end_time = discord.utils.utcnow() + timedelta( minutes = 300 ),
+		privacy_level = discord.PrivacyLevel.guild_only,
+		entity_type = discord.EntityType.external,
+		location = tbl['Name']
+	)
 
 @commands.has_permissions( administrator = True )
 @bot.command()
