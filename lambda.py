@@ -95,7 +95,7 @@ async def openvote( ctx ):
 	perms = channel.overwrites_for( ctx.guild.default_role )
 	perms.view_channel = True
 	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
-	await ctx.send( f"<@&605212647494778901> <#{id}> is now open!" )
+	await ctx.send( f"<@&798362321424220190> <#{id}> is now open!" )
 	await ctx.message.delete()
 
 @commands.has_permissions( administrator = True )
