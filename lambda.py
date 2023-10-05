@@ -109,11 +109,8 @@ async def closevote( ctx ):
 	await ctx.message.delete()
 	messages = [message async for message in channel.history()]
 	await messages[0].clear_reactions()
-	await messages[1].clear_reactions()
-	for e in ( '🇦', '🇧', '🇨', '🇩', '🇪', '🇫', '🇬' ):
+	for e in ( '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟' ):
 		await messages[0].add_reaction( e )
-	for e in ( '1️⃣', '2️⃣', '3️⃣', '4️⃣' ):
-		await messages[1].add_reaction( e )
 
 if __name__ == "__main__":
 	try:
