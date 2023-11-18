@@ -5,18 +5,6 @@
 		"Description":"Multiplayer Containment Breach with improved graphics. Server runs various plugins to keep repetition down.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
-	"tfc": {
-		"Name":"Team Fortress Classic",
-		"Mention":"798362762585309204",
-		"Description":"Hat simulator: boomer edition.",
-		"Available":"Public, open to anyone."
-	},
-	"cs": {
-		"Name":"Counter-Strike 1.6",
-		"Mention":"798362762585309204",
-		"Description":"Classic multiplayer shooter.",
-		"Available":"Public, open to anyone."
-	},
 	"sandbox": {
 		"Name":"Sandbox (Garry's Mod)",
 		"Description":"Server from an old community, contains addons from other servers put together in a sandbox environment with dozens of maps.",
@@ -62,12 +50,6 @@
 		"Available":"Not public, open to community members and friends of community members.",
 		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded-2"
-	},
-	"hldms": {
-		"Name":"Half-Life Deathmatch: Source",
-		"Mention":"798362762585309204",
-		"Description":"Half-Life deathmatch with more bugs and shiny textures.",
-		"Available":"Public, open to anyone."
 	},
 	"unbalanced": {
 		"Name":"Unbalanced (Minecraft)",
@@ -119,7 +101,7 @@
 		"Name":"Half-Life Deathmatch",
 		"Mention":"798362762585309204",
 		"Description":"OG deathmatch.",
-		"Available":"Public, open to anyone."
+		"Available":"Not public, open to community members and friends of community members."
 	},
 	"earth": {
 		"Name":"Earth (Minecraft)",
@@ -139,7 +121,7 @@
 		"Name":"Ricochet",
 		"Mention":"798362762585309204",
 		"Description":"Greatest game of all time.",
-		"Available":"Public, open to anyone."
+		"Available":"Not public, open to community members and friends of community members."
 	},
 	"cityrp": {
 		"Name":"CityRP (Garry's Mod)",
