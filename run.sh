@@ -1,2 +1,2 @@
 #!/bin/bash
-pyw lambda.py
+python3 lambda.py
