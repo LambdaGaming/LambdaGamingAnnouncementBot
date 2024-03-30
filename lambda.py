@@ -2,10 +2,10 @@ import discord
 import feedparser
 import json
 from datetime import timedelta
+from discord import app_commands
 from discord.ext import commands
 
-intents = discord.Intents.all()
-bot = commands.Bot( command_prefix = "!", intents = intents )
+bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all() )
 jsonfile = open( "servers.json", "r" )
 servers = json.loads( jsonfile.read() )
 jsonfile.close()
@@ -27,45 +27,27 @@ def ParseSummary( summary ):
 		summary = summary.replace( f[0], f[1] )
 	return summary
 
-def GetAdditionalInfo( *args ):
-	if len( args ) >= 2:
-		info = ""
-		for i in range( 1, len( args ) ):
-			info += f" {args[i]}"
-		return f"\n\n**Additional Info:**{info}"
-	return ""
-
 @bot.event
 async def on_ready():
-	print( f'Logged in as {bot.user}!' )
+	sync = await bot.tree.sync()
+	print( f'Logged in as {bot.user} and synced {len( sync )} commands!' )
 
-@bot.event
-async def on_command_error( ctx, error ):
-	if isinstance( error, commands.MissingRequiredArgument ):
-		await ctx.send( f"Missing argument(s) for {ctx.message.content}", delete_after = 5 )
-	if isinstance( error, commands.MissingPermissions ):
-		await ctx.send( "You don't have permission to use this command.", delete_after = 5 )
-
-@commands.has_permissions( administrator = True )
-@bot.command()
-async def opening( ctx, *args ):
-	if len( args ) < 1:
-		await ctx.send( "Please input the server name as the first argument.", delete_after = 5 )
+@bot.tree.command( name = "opening", description = "Announce a server opening." )
+@app_commands.describe( server = "The server to open" )
+@app_commands.default_permissions( permissions = 8 )
+async def opening( inter: discord.Interaction, server: str ):
+	if not server in servers:
+		await inter.response.send_message( "Server name is invalid." )
 		return
-	if not args[0] in servers:
-		await ctx.send( "Server name is invalid.", delete_after = 5 )
-		return
-	tbl = servers[args[0]]
+	tbl = servers[server]
 	available = tbl['Available']
-	additional = GetAdditionalInfo( *args )
 	content = ""
 	if "Content" in tbl:
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
-	await ctx.message.delete()
-	await ctx.send( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}{additional}" )
-	await ctx.guild.create_scheduled_event(
+	await inter.response.send_message( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}{additional}" )
+	await inter.guild.create_scheduled_event(
 		name = "Server Opening",
-		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}{additional}",
+		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}",
 		start_time = discord.utils.utcnow() + timedelta( seconds = 5 ),
 		end_time = discord.utils.utcnow() + timedelta( minutes = 300 ),
 		privacy_level = discord.PrivacyLevel.guild_only,
@@ -73,9 +55,9 @@ async def opening( ctx, *args ):
 		location = tbl['Name']
 	)
 
-@commands.has_permissions( administrator = True )
-@bot.command()
-async def update( ctx ):
+@bot.tree.command( name = "update", description = "Pull latest announcement from Steam group RSS feed." )
+@app_commands.default_permissions( permissions = 8 )
+async def update( inter: discord.Interaction ):
 	getrss = feedparser.parse( "https://steamcommunity.com/groups/LambdaG/rss" )
 	item = getrss.entries[0]
 	embed = discord.Embed(
@@ -84,29 +66,26 @@ async def update( ctx ):
 		description = ParseSummary( item.summary ),
 		color = 0xFF5900
 	)
-	await ctx.send( embed = embed )
-	await ctx.message.delete()
+	await inter.response.send_message( embed = embed )
 
-@commands.has_permissions( administrator = True )
-@bot.command()
-async def openvote( ctx ):
+@bot.tree.command( name = "openvote", description = "Open server voting." )
+@app_commands.default_permissions( permissions = 8 )
+async def openvote( inter: discord.Interaction ):
 	id = 1149523239673004053
 	channel = bot.get_channel( id )
-	perms = channel.overwrites_for( ctx.guild.default_role )
+	perms = channel.overwrites_for( inter.guild.default_role )
 	perms.view_channel = True
-	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
-	await ctx.send( f"<#{id}> is now open!" )
-	await ctx.message.delete()
+	await channel.set_permissions( inter.guild.default_role, overwrite = perms )
+	await inter.response.send_message( f"<#{id}> is now open!" )
 
-@commands.has_permissions( administrator = True )
-@bot.command()
-async def closevote( ctx ):
+@bot.tree.command( name = "closevote", description = "Close server voting." )
+@app_commands.default_permissions( permissions = 8 )
+async def closevote( inter: discord.Interaction ):
 	channel = bot.get_channel( 1149523239673004053 )
-	perms = channel.overwrites_for( ctx.guild.default_role )
+	perms = channel.overwrites_for( inter.guild.default_role )
 	perms.view_channel = False
-	await channel.set_permissions( ctx.guild.default_role, overwrite = perms )
-	await ctx.send( "Server voting is now closed." )
-	await ctx.message.delete()
+	await channel.set_permissions( inter.guild.default_role, overwrite = perms )
+	await inter.response.send_message( "Server voting is now closed." )
 	messages = [message async for message in channel.history()]
 	await messages[0].clear_reactions()
 	for e in ( '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟' ):
