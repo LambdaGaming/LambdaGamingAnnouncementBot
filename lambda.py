@@ -44,7 +44,7 @@ async def opening( inter: discord.Interaction, server: str ):
 	content = ""
 	if "Content" in tbl:
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
-	await inter.response.send_message( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}{additional}" )
+	await inter.response.send_message( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}" )
 	await inter.guild.create_scheduled_event(
 		name = "Server Opening",
 		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}",
