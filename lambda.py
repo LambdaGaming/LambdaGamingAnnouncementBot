@@ -2,7 +2,7 @@ import discord
 import feedparser
 import json
 from datetime import timedelta
-from discord import app_commands
+from discord import app_commands, Poll
 from discord.ext import commands
 
 bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all() )
@@ -71,25 +71,22 @@ async def update( inter: discord.Interaction ):
 @bot.tree.command( name = "openvote", description = "Open server voting." )
 @app_commands.default_permissions( permissions = 8 )
 async def openvote( inter: discord.Interaction ):
-	id = 1149523239673004053
-	channel = bot.get_channel( id )
-	perms = channel.overwrites_for( inter.guild.default_role )
+	perms = inter.channel.overwrites_for( inter.guild.default_role )
 	perms.view_channel = True
-	await channel.set_permissions( inter.guild.default_role, overwrite = perms )
-	await inter.response.send_message( f"<#{id}> is now open!" )
+	vote = Poll( "Vote on this week's server", timedelta( hours = 168 ), True )
+	await inter.channel.set_permissions( inter.guild.default_role, overwrite = perms )
+	await inter.response.send_message( f"Poll test", poll = vote )
 
 @bot.tree.command( name = "closevote", description = "Close server voting." )
 @app_commands.default_permissions( permissions = 8 )
 async def closevote( inter: discord.Interaction ):
 	channel = bot.get_channel( 1149523239673004053 )
-	perms = channel.overwrites_for( inter.guild.default_role )
+	perms = inter.channel.overwrites_for( inter.guild.default_role )
 	perms.view_channel = False
-	await channel.set_permissions( inter.guild.default_role, overwrite = perms )
-	await inter.response.send_message( "Server voting is now closed." )
-	messages = [message async for message in channel.history()]
-	await messages[0].clear_reactions()
-	for e in ( '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟' ):
-		await messages[0].add_reaction( e )
+	await inter.channel.set_permissions( inter.guild.default_role, overwrite = perms )
+	messages = [message async for message in inter.channel.history()]
+	await messages[0].end_poll()
+	await messages[0].delete()
 
 if __name__ == "__main__":
 	try:
