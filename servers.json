@@ -103,12 +103,12 @@
 		"Description":"OG deathmatch.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
-	"earth": {
-		"Name":"Earth (Minecraft)",
-		"Description":"Modded minecraft server that runs the 1:1 scale Earth mod along with various other mods with the goal of simply building. Players are in creative mode by default but have admin privileges to switch to other modes if needed. Runs on version 1.12.2.",
+	"adventure": {
+		"Name":"Adventure (Minecraft)",
+		"Description":"Modded Minecraft server that focuses gameplay more towards PvE and exploration using over 100 mods. Runs on version 1.20.1.",
 		"Available":"Not public, open to community members and friends of community members.",
 		"Mention":"798360357042257920",
-		"Content":"https://www.technicpack.net/modpack/lambda-gaming-earth"
+		"Content":"https://www.technicpack.net/modpack/lambda-gaming-adventure"
 	},
 	"hlurp": {
 		"Name":"Half-Life Universe RP (Garry's Mod)",
