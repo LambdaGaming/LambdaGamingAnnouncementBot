@@ -13,7 +13,7 @@ jsonfile.close()
 pollServers = [
 	"CityRP", "Half-Life Universe RP",
 	"Various Gamemodes", "Sandbox",
-	"SCP: Secret Laboratory", "Minecraft Vanilla",
+	"SCP: Secret Laboratory", "MC Adventure (2024)",
 	"MC Modded 1 (2018)", "MC Modded 2 (2023)",
 	"MC Unbalanced 1 (2019)", "MC Unbalanced 2 (2020)"
 ]
@@ -85,7 +85,7 @@ async def openvote( inter: discord.Interaction, day: str, time: str ):
 	vote = Poll( question = "Vote on this week's server", duration = timedelta( hours = 168 ), multiple = True )
 	for server in pollServers:
 		vote.add_answer( text = server )
-	await inter.response.send_message( f"<@&605212647494778901>\nVote for the servers you'd like to join this week. Please do not vote for servers you do not plan on joining. All servers require at least 3 votes to be opened. Ties will be broken by OP.\n\nThe winning server this week will be opened on **{day} @ {time} EST.**", poll = vote )
+	await inter.response.send_message( f"<@&605212647494778901>\nVote for the servers you'd like to join this week. Please do not vote if you do not plan on joining. All servers require at least 3 votes to be opened. Ties will be broken by OP.\n\nThe winning server this week will be opened on **{day} @ {time} EST.**", poll = vote )
 
 @bot.tree.command( name = "closevote", description = "Close server voting." )
 @app_commands.default_permissions( permissions = 8 )
