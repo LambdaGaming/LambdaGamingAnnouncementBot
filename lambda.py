@@ -5,7 +5,7 @@ from datetime import timedelta
 from discord import app_commands, Poll
 from discord.ext import commands
 
-bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all() )
+bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all(), allowed_mentions = discord.AllowedMentions( roles = True, users = True, everyone = True ) )
 jsonfile = open( "servers.json", "r" )
 servers = json.loads( jsonfile.read() )
 jsonfile.close()
