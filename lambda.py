@@ -68,10 +68,14 @@ async def opening( inter: discord.Interaction, server: str ):
 async def update( inter: discord.Interaction ):
 	getrss = feedparser.parse( "https://steamcommunity.com/groups/LambdaG/rss" )
 	item = getrss.entries[0]
+	summary = ParseSummary( item.summary )
+	if len( summary ) > 4096:
+		await inter.response.send_message( f"## __**{item.title}**__\n\nChangelog is too big to be posted here, linking to Steam announcement instead.\n\n{item.link}" )
+		return
 	embed = discord.Embed(
 		title = item.title,
 		url = item.link,
-		description = ParseSummary( item.summary ),
+		description = summary,
 		color = 0xFF5900
 	)
 	await inter.response.send_message( embed = embed )
