@@ -1,7 +1,6 @@
 {
 	"scp": {
 		"Name":"SCP: Secret Laboratory",
-		"Mention":"798362377270722663",
 		"Description":"Multiplayer Containment Breach with improved graphics. Server runs various plugins to keep repetition down.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
@@ -9,31 +8,26 @@
 		"Name":"Sandbox (Garry's Mod)",
 		"Description":"Server from an old community, contains addons from other servers put together in a sandbox environment with dozens of maps.",
 		"Available":"Public, open to anyone.",
-		"Mention":"798362321424220190",
 		"Content":"https://steamcommunity.com/sharedfiles/filedetails/?id=480846269"
 	},
 	"various": {
 		"Name":"Various Gamemodes (Garry's Mod)",
 		"Description":"This server currently hosts the following gamemodes: Cops and Runners, Darkest Days, Dropzone, Flood, Jazztronauts, MelonRacer, Prop Hunt Enhanced Plus, Pirate Ship Wars Remix, Sledbuild, Stop it Slender, TTT2, Trash Compactor, and Zombie Survival.",
 		"Available":"Public, open to anyone.",
-		"Mention":"798362321424220190",
 		"Content":"https://steamcommunity.com/sharedfiles/filedetails/?id=753320794"
 	},
 	"vanilla": {
 		"Name":"Vanilla (Minecraft)",
-		"Mention":"798360357042257920",
 		"Description":"Always runs the most recent release of the game. Multiple maps to choose from.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
 	"synergy": {
 		"Name":"Synergy",
-		"Mention":"798362762585309204",
 		"Description":"Multiplayer Half-Life 2. Also supports Episodes 1 and 2.",
 		"Available":"Password protected, open to community members and friends of community members."
 	},
 	"rok": {
 		"Name":"Reign of Kings",
-		"Mention":"798362762585309204",
 		"Description":"Medieval survival game.",
 		"Available":"Password protected, open to community members and friends of community members."
 	},
@@ -41,26 +35,22 @@
 		"Name":"OG Modded (Minecraft)",
 		"Description":"Original modded Minecraft server. Contains around 50 various mods. Players are in survival mode. Runs on version 1.12.2.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded"
 	},
 	"modded2": {
 		"Name":"Modded 2 (Minecraft)",
 		"Description":"Sequel to OG modded. Contains over 50 various mods. Players are in survival mode. Runs on version 1.19.2.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded-2"
 	},
 	"unbalanced": {
 		"Name":"Unbalanced (Minecraft)",
 		"Description":"Modded Minecraft server that contains around 60 OP mods that were rejected from other servers. Players are in survival mode. Runs on version 1.12.2. WARNING: Some PCs may struggle to run this modpack.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-unbalanced"
 	},
 	"hl2dm": {
 		"Name":"Half-Life 2 Deathmatch",
-		"Mention":"798362762585309204",
 		"Description":"Classic toilet throwing.",
 		"Available":"Public, open to anyone."
 	},
@@ -68,38 +58,32 @@
 		"Name":"Unbalanced 2 (Minecraft)",
 		"Description":"Modded Minecraft server that contains around 60 OP mods that were rejected or never added to other servers. Players are in survival mode. Runs on version 1.12.2. WARNING: Some PCs may struggle to run this modpack.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-unbalanced-2"
 	},
 	"tf2": {
 		"Name":"Team Fortress 2",
 		"Description":"Hat simulator.",
 		"Available":"Password protected, open to community members and friends of community members.",
-		"Mention":"798362762585309204",
-		"Content":"https://www.dropbox.com/s/tfkkv9kuvr625br/lambda_tf2.rar?dl=1"
+		"Content":"https://www.dropbox.com/scl/fi/6rj8zqpaiaw6e48lz7lt5/lambda_tf2.zip?rlkey=plvabl7akv4ktdomi8ptalj4u&st=lad6oc8o&dl=1"
 	},
 	"rlcraft": {
 		"Name":"RLCraft (Minecraft)",
 		"Description":"Runs the most recent version of the RLCraft modpack. Not recommended for people with low amounts of patience.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/shivaxi-rlcraft"},
 	"kf2": {
 		"ShortName":"kf2",
 		"Description":"Zombie Survival 2.",
 		"Available":"Password protected, open to community members and friends of community members.",
-		"Mention":"798362762585309204",
 		"Name":"Killing Floor 2"
 	},
 	"protocol": {
 		"Name":"Broke Protocol: Online City RPG",
-		"Mention":"798362762585309204",
 		"Description":"Cool indie game that sorta mixes Minecraft with CityRP and GTA Online.",
 		"Available":"Password protected, open to community members and friends of community members."
 	},
 	"hldm": {
 		"Name":"Half-Life Deathmatch",
-		"Mention":"798362762585309204",
 		"Description":"OG deathmatch.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
@@ -107,19 +91,16 @@
 		"Name":"Adventure (Minecraft)",
 		"Description":"Modded Minecraft server that focuses gameplay more towards PvE and exploration using over 100 mods. Runs on version 1.20.1.",
 		"Available":"Not public, open to community members and friends of community members.",
-		"Mention":"798360357042257920",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-adventure"
 	},
 	"hlurp": {
 		"Name":"Half-Life Universe RP (Garry's Mod)",
 		"Description":"Custom gamemode based on the major events of the official Half-Life games.",
 		"Available":"Public, open to anyone.",
-		"Mention":"798362321424220190",
 		"Content":"https://steamcommunity.com/sharedfiles/filedetails/?id=587127431"
 	},
 	"ricochet": {
 		"Name":"Ricochet",
-		"Mention":"798362762585309204",
 		"Description":"Greatest game of all time.",
 		"Available":"Not public, open to community members and friends of community members."
 	},
@@ -127,7 +108,6 @@
 		"Name":"CityRP (Garry's Mod)",
 		"Description":"More advanced and realistic version of DarkRP, with a big focus on player freedom.",
 		"Available":"Public, open to anyone.",
-		"Mention":"798362321424220190",
 		"Content":"https://steamcommunity.com/sharedfiles/filedetails/?id=629442313"
 	}
 }

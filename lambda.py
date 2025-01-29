@@ -52,7 +52,7 @@ async def opening( inter: discord.Interaction, server: str ):
 	content = ""
 	if "Content" in tbl:
 		content = f"\n\n**Required Content: **<{tbl['Content']}>"
-	await inter.response.send_message( f">>> <@&{tbl['Mention']}>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}" )
+	await inter.response.send_message( f">>> <@&1334255663227998289>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}" )
 	await inter.guild.create_scheduled_event(
 		name = "Server Opening",
 		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}",
@@ -89,7 +89,7 @@ async def openvote( inter: discord.Interaction, day: str, time: str ):
 	vote = Poll( question = "Vote on this week's server", duration = timedelta( hours = 168 ), multiple = True )
 	for server in pollServers:
 		vote.add_answer( text = server )
-	await inter.response.send_message( f"<@&605212647494778901>\nVote for the servers you'd like to join this week. Please do not vote if you do not plan on joining. All servers require at least 3 votes to be opened. Ties will be broken by OP.\n\nThe winning server this week will be opened on **{day} @ {time} EST.**", poll = vote )
+	await inter.response.send_message( f"<@&1334255663227998289>\nVote for the servers you'd like to join this week. Please do not vote if you do not plan on joining. All servers require at least 3 votes to be opened. Ties will be broken by OP.\n\nThe winning server this week will be opened on **{day} @ {time} EST.**", poll = vote )
 
 @bot.tree.command( name = "closevote", description = "Close server voting." )
 @app_commands.default_permissions( permissions = 8 )
