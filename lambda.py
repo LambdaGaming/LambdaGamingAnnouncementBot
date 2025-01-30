@@ -48,14 +48,12 @@ async def opening( inter: discord.Interaction, server: str ):
 		await inter.response.send_message( "Server name is invalid." )
 		return
 	tbl = servers[server]
-	available = tbl['Available']
-	content = ""
-	if "Content" in tbl:
-		content = f"\n\n**Required Content: **<{tbl['Content']}>"
-	await inter.response.send_message( f">>> <@&1334255663227998289>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n**Availability: **{available}{content}" )
+	notes = "Notes" in tbl and f"**Notes: **{tbl['Notes']}" or ""
+	content = "Content" in tbl and f"**Required Content: **<{tbl['Content']}>" or ""
+	await inter.response.send_message( f">>> <@&1334255663227998289>\n__**Server Opening!**__\n\n**Server: **{tbl['Name']}\n\n**Description: **{tbl['Description']}\n\n{notes}\n\n{content}" )
 	await inter.guild.create_scheduled_event(
 		name = "Server Opening",
-		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\nAvailability: {available}{content}",
+		description = f"The {tbl['Name']} server is opening.\n\nDescription: {tbl['Description']}\n\n{notes}\n\n{content}",
 		start_time = discord.utils.utcnow() + timedelta( seconds = 5 ),
 		end_time = discord.utils.utcnow() + timedelta( minutes = 300 ),
 		privacy_level = discord.PrivacyLevel.guild_only,
