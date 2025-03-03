@@ -23,19 +23,19 @@
 	},
 	"modded": {
 		"Name":"Minecraft Modded 1",
-		"Description":"Original modded Minecraft server from 2018. Contains around 50 mods. Players are in survival mode. Runs on version 1.12.2.",
+		"Description":"Original modded Minecraft server from 2018. Contains around 50 mods. Players are in survival mode. Runs on version 1.12.2 with Forge.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded"
 	},
 	"modded2": {
 		"Name":"Minecraft Modded 2",
-		"Description":"2023 successor to Modded 1. Contains over 50 mods. Players are in survival mode. Runs on version 1.19.2.",
+		"Description":"2023 successor to Modded 1. Contains over 50 mods. Players are in survival mode. Runs on version 1.19.2 with Fabric.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP. Lower-end PCs may struggle to run this modpack.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded-2"
 	},
 	"unbalanced": {
 		"Name":"Minecraft Unbalanced",
-		"Description":"Modded Minecraft server from 2019 that contains around 60 OP mods that were rejected from other servers. Players are in survival mode. Runs on version 1.12.2.",
+		"Description":"Originally made in 2019 and then refreshed in 2025. Contains around 50 mods, many of which are OP and don't belong in the regular modded servers. Players are in survival mode. Runs on version 1.7.10 with Forge.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-unbalanced"
 	},
@@ -45,7 +45,7 @@
 	},
 	"unbalanced2": {
 		"Name":"Minecraft Unbalanced 2",
-		"Description":"Modded Minecraft server from 2020 that contains around 60 OP mods that were rejected from other servers. Players are in survival mode. Runs on version 1.12.2.",
+		"Description":"Modded Minecraft server from 2020. Contains around 60 mods, many of which are OP and don't belong in the regular modded servers. Players are in survival mode. Runs on version 1.12.2 with Forge.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP. Lower-end PCs may struggle to run this modpack.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-unbalanced-2"
 	},
@@ -66,7 +66,7 @@
 	},
 	"adventure": {
 		"Name":"Adventure (Minecraft)",
-		"Description":"Modded Minecraft server that focuses gameplay more towards PvE and exploration using over 100 mods. Runs on version 1.20.1.",
+		"Description":"Modded Minecraft server that focuses gameplay more towards PvE and exploration using over 100 mods. Runs on version 1.20.1 with Fabric.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-adventure"
 	},
