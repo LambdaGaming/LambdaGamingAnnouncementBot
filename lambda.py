@@ -13,9 +13,9 @@ jsonfile.close()
 pollServers = [
 	"CityRP", "Half-Life Universe RP",
 	"Various Gamemodes", "Sandbox",
-	"SCP: Secret Laboratory", "MC Adventure (2024)",
-	"MC Modded 1 (2018)", "MC Modded 2 (2023)",
-	"MC Unbalanced 1 (2019)", "MC Unbalanced 2 (2020)"
+	"SCP: Secret Laboratory", "Minecraft Modded 1",
+	"Minecraft Modded 2", "Minecraft Unbalanced",
+	"Minecraft Vanilla", "Valheim"
 ]
 
 def ParseSummary( summary ):
