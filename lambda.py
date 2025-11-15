@@ -20,11 +20,11 @@ pollServers = [
 
 def ParseSummary( summary ):
 	formats = [
-		['<div class="bb_h1">', "\n\n**"],
-		["</div>", "**"],
+		['<div class="bb_h1">', "\n### "],
+		["</div>", ""],
 		['<ul class="bb_ul">', ""],
 		["</ul>", ""],
-		["<li>", "\n\t•"],
+		["<li>", "\n- "],
 		["</li>", ""],
 		["<br><br>", ""],
 		["<br />", ""],
