@@ -1,6 +1,6 @@
 import discord
-import feedparser
 import json
+from urllib import request
 from datetime import timedelta
 from discord import app_commands, Poll
 from discord.ext import commands
@@ -18,22 +18,19 @@ pollServers = [
 	"Minecraft Vanilla", "Valheim"
 ]
 
-def ParseSummary( summary ):
+def ParseInfo( info ):
 	formats = [
-		['<div class="bb_h1">', "\n### "],
-		["</div>", ""],
-		['<ul class="bb_ul">', ""],
+		['<h3>', "\n### "],
+		["</h3>", ""],
+		['<ul>', ""],
 		["</ul>", ""],
 		["<li>", "\n- "],
 		["</li>", ""],
-		["<br><br>", ""],
-		["<br />", ""],
-		["<br>", "\n"],
-		["&quot;", '"']
+		["<br>", "\n"]
 	]
 	for f in formats:
-		summary = summary.replace( f[0], f[1] )
-	return summary
+		info = info.replace( f[0], f[1] )
+	return info
 
 @bot.event
 async def on_ready():
@@ -61,19 +58,21 @@ async def opening( inter: discord.Interaction, server: str ):
 		location = tbl['Name']
 	)
 
-@bot.tree.command( name = "update", description = "Pull latest announcement from Steam group RSS feed." )
+@bot.tree.command( name = "update", description = "Pull latest announcement from website." )
 @app_commands.default_permissions( permissions = 8 )
 async def update( inter: discord.Interaction ):
-	getrss = feedparser.parse( "https://steamcommunity.com/groups/LambdaG/rss" )
-	item = getrss.entries[0]
-	summary = ParseSummary( item.summary )
-	if len( summary ) > 4096:
-		await inter.response.send_message( f"## __**{item.title}**__\n\nChangelog is too big to be posted here, linking to Steam announcement instead.\n\n{item.link}" )
+	with request.urlopen( "https://lambdagaming.github.io/data/news.json" ) as url:
+		news = json.loads( url.read().decode() )
+	item = news[0]
+	info = ParseInfo( item['info'] )
+	link = f"https://lambdagaming.github.io/news?id={len( news )}"
+	if len( info ) > 4096:
+		await inter.response.send_message( f"## __**{item['title']}**__\n\nAnnouncement is too big to be posted here, linking to website instead.\n\n{link}" )
 		return
 	embed = discord.Embed(
-		title = item.title,
-		url = item.link,
-		description = summary,
+		title = item['title'],
+		url = link,
+		description = info,
 		color = 0xFF5900
 	)
 	await inter.response.send_message( embed = embed )
