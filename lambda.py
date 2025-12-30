@@ -26,7 +26,9 @@ def ParseInfo( info ):
 		["</ul>", ""],
 		["<li>", "\n- "],
 		["</li>", ""],
-		["<br>", "\n"]
+		["<br>", "\n"],
+		["<p>", ""],
+		["</p>", "\n\n"]
 	]
 	for f in formats:
 		info = info.replace( f[0], f[1] )
