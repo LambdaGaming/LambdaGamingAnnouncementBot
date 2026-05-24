@@ -61,15 +61,20 @@ async def opening( inter: discord.Interaction, server: str ):
 	)
 
 @bot.tree.command( name = "update", description = "Pull latest announcement from website." )
+@app_commands.describe( role = "Role to mention" )
 @app_commands.default_permissions( permissions = 8 )
-async def update( inter: discord.Interaction ):
+async def update( inter: discord.Interaction, role: discord.Role = None ):
 	with request.urlopen( "https://lambdagaming.github.io/data/news.json" ) as url:
 		news = json.loads( url.read().decode() )
 	item = news[0]
 	info = ParseInfo( item['info'] )
 	link = f"https://lambdagaming.github.io/news?id={len( news )}"
+	mention = ""
+	if role is not None:
+		# Need to use role name for @everyone due to bug with discord.py
+		mention = f"{role.name}\n" if role.name == "@everyone" else f"{role.mention}\n"
 	if len( info ) > 4096:
-		await inter.response.send_message( f"## __**{item['title']}**__\n\nAnnouncement is too big to be posted here, linking to website instead.\n\n{link}" )
+		await inter.response.send_message( f"{mention}## __**{item['title']}**__\n\nAnnouncement is too big to be posted here, linking to website instead.\n\n{link}" )
 		return
 	embed = discord.Embed(
 		title = item['title'],
@@ -77,7 +82,7 @@ async def update( inter: discord.Interaction ):
 		description = info,
 		color = 0xFF5900
 	)
-	await inter.response.send_message( embed = embed )
+	await inter.response.send_message( mention, embed = embed )
 
 @bot.tree.command( name = "openvote", description = "Open server voting." )
 @app_commands.describe( day = "The day the server will open" )
