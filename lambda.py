@@ -4,6 +4,7 @@ from urllib import request
 from datetime import timedelta
 from discord import app_commands, Poll
 from discord.ext import commands
+from markdownify import markdownify
 
 bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all(), allowed_mentions = discord.AllowedMentions( roles = True, users = True, everyone = True ) )
 jsonfile = open( "servers.json", "r" )
@@ -17,22 +18,6 @@ pollServers = [
 	"Minecraft Modded 2", "Minecraft Unbalanced",
 	"Minecraft Vanilla", "Valheim"
 ]
-
-def ParseInfo( info ):
-	formats = [
-		['<h3>', "\n### "],
-		["</h3>", ""],
-		['<ul>', ""],
-		["</ul>", ""],
-		["<li>", "\n- "],
-		["</li>", ""],
-		["<br>", "\n"],
-		["<p>", ""],
-		["</p>", "\n\n"]
-	]
-	for f in formats:
-		info = info.replace( f[0], f[1] )
-	return info
 
 @bot.event
 async def on_ready():
@@ -67,7 +52,7 @@ async def update( inter: discord.Interaction, role: discord.Role = None ):
 	with request.urlopen( "https://lambdagaming.github.io/data/news.json" ) as url:
 		news = json.loads( url.read().decode() )
 	item = news[0]
-	info = ParseInfo( item['info'] )
+	info = markdownify( item['info'] )
 	link = f"https://lambdagaming.github.io/news?id={len( news )}"
 	mention = ""
 	if role is not None:
