@@ -1,7 +1,7 @@
 {
 	"scp": {
 		"Name":"SCP: Secret Laboratory",
-		"Description":"Round-based multiplayer SCP game where players have different objectives depending on what team they spawn as. Server runs various plugins to keep repetition down.",
+		"Description":"Round-based multiplayer SCP game where players have different objectives depending on what team they spawn as. Server runs several custom plugins to make the rounds more interesting.",
 		"Notes":"Server won't show up in the browser. Join through Steam or use direct connect. DM OPGman for the IP."
 	},
 	"sandbox": {
@@ -22,20 +22,14 @@
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP."
 	},
 	"modded": {
-		"Name":"Minecraft Modded 1",
-		"Description":"Original modded Minecraft server from 2018. Contains around 60 mods. Players are in survival mode. Runs on version 1.12.2 with Forge.",
+		"Name":"Minecraft Modded",
+		"Description":"Mostly vanilla-friendly modpack with a focus on magic, exploration, and building. Runs over 200 mods on version 1.21.1 with NeoForge.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP.",
-		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded"
-	},
-	"modded2": {
-		"Name":"Minecraft Modded 2",
-		"Description":"Modern successor to Modded 1. Contains over 150 mods. Players are in survival mode. Runs on version 1.21.1 with NeoForge.",
-		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP. Lower-end PCs may struggle to run this modpack.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-modded-2"
 	},
 	"unbalanced": {
 		"Name":"Minecraft Unbalanced",
-		"Description":"Originally made in 2019 and then refreshed in 2025. Contains around 50 mods, many of which are OP and don't belong in the regular modded servers. Players are in survival mode. Runs on version 1.7.10 with Forge.",
+		"Description":"Challenging modpack that involves building up high-tech infrastructure to defeat powerful enemies in a post-apocalyptic world. Runs around 50 mods on version 1.7.10 with Forge.",
 		"Notes":"Player slots are limited so veteran members have priority. DM OPGman for the IP.",
 		"Content":"https://www.technicpack.net/modpack/lambda-gaming-unbalanced"
 	},
