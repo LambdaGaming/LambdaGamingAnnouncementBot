@@ -2,7 +2,7 @@ import discord
 import json
 from urllib import request
 from datetime import timedelta
-from discord import app_commands, Poll
+from discord import app_commands
 from discord.ext import commands
 from markdownify import markdownify
 
@@ -10,14 +10,6 @@ bot = commands.Bot( command_prefix = "!", intents = discord.Intents.all(), allow
 jsonfile = open( "servers.json", "r" )
 servers = json.loads( jsonfile.read() )
 jsonfile.close()
-
-pollServers = [
-	"CityRP", "Half-Life Universe RP",
-	"Various Gamemodes", "Sandbox",
-	"SCP: Secret Laboratory", "Minecraft Modded 1",
-	"Minecraft Modded 2", "Minecraft Unbalanced",
-	"Minecraft Vanilla", "Valheim"
-]
 
 @bot.event
 async def on_ready():
@@ -68,24 +60,6 @@ async def update( inter: discord.Interaction, role: discord.Role = None ):
 		color = 0xFF5900
 	)
 	await inter.response.send_message( mention, embed = embed )
-
-@bot.tree.command( name = "openvote", description = "Open server voting." )
-@app_commands.describe( day = "The day the server will open" )
-@app_commands.describe( time = "The time the server will open" )
-@app_commands.default_permissions( permissions = 8 )
-async def openvote( inter: discord.Interaction, day: str, time: str ):
-	await inter.channel.purge()
-	vote = Poll( question = "Vote on this week's server", duration = timedelta( hours = 168 ), multiple = True )
-	for server in pollServers:
-		vote.add_answer( text = server )
-	await inter.response.send_message( f"<@&1334255663227998289>\nVote for the servers you'd like to join this week. Please do not vote if you do not plan on joining. All servers require at least 3 votes to be opened. Ties will be broken by OP.\n\nThe winning server this week will be opened on **{day} @ {time} EST.**", poll = vote )
-
-@bot.tree.command( name = "closevote", description = "Close server voting." )
-@app_commands.default_permissions( permissions = 8 )
-async def closevote( inter: discord.Interaction ):
-	messages = [message async for message in inter.channel.history()]
-	await messages[0].end_poll()
-	await inter.response.send_message( "Vote closed.", ephemeral = True )
 
 if __name__ == "__main__":
 	try:
